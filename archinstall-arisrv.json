@@ -1,0 +1,82 @@
+{
+  "archinstall-language": "English",
+  "script": "guided",
+  "hostname": "arisrv",
+  "locale_config": {
+    "kb_layout": "us",
+    "sys_enc": "UTF-8",
+    "sys_lang": "en_US"
+  },
+  "timezone": "Europe/Amsterdam",
+  "ntp": true,
+  "mirror_config": {
+    "mirror_regions": {
+      "Netherlands": [
+        "https://mirror.nl.leaseweb.net/archlinux/$repo/os/$arch",
+        "https://mirrors.xtom.nl/archlinux/$repo/os/$arch",
+        "https://ftp.nluug.nl/os/Linux/distr/archlinux/$repo/os/$arch"
+      ],
+      "Germany": [
+        "https://ftp.fau.de/archlinux/$repo/os/$arch",
+        "https://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch",
+        "https://mirror.fra10.de.leaseweb.net/archlinux/$repo/os/$arch"
+      ]
+    }
+  },
+  "pacman_config": {
+    "color": true,
+    "parallel_downloads": 5
+  },
+  "bootloader_config": {
+    "bootloader": "Systemd-boot",
+    "uki": false,
+    "removable": false
+  },
+  "kernels": [
+    "linux"
+  ],
+  "swap": {
+    "enabled": true,
+    "algorithm": "zstd"
+  },
+  "profile_config": {
+    "profile": {
+      "main": "Server",
+      "details": [
+        "sshd"
+      ]
+    }
+  },
+  "audio_config": {
+    "audio": "No audio server"
+  },
+  "app_config": {
+    "bluetooth_config": {
+      "enabled": false
+    }
+  },
+  "network_config": {
+    "type": "nm"
+  },
+  "packages": [
+    "base",
+    "base-devel",
+    "bash-completion",
+    "fish",
+    "git",
+    "intel-ucode",
+    "jq",
+    "linux",
+    "linux-firmware",
+    "man-db",
+    "man-pages",
+    "nano",
+    "neovim",
+    "networkmanager",
+    "openssh",
+    "smartmontools",
+    "stow",
+    "sudo",
+    "tree"
+  ]
+}
