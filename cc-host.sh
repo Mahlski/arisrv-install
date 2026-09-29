@@ -55,9 +55,16 @@ if [ ! -f "$SETTINGS" ]; then
       "Edit(~/backups/**)"
     ]
   },
+  "model": "opus",
   "sandbox": {
     "enabled": true
-  }
+  },
+  "promptSuggestionEnabled": false,
+  "awaySummaryEnabled": false,
+  "theme": "dark",
+  "autoCompactEnabled": false,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
 }
 EOF
 fi
