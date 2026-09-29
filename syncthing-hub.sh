@@ -17,7 +17,7 @@ pacman -S --needed --noconfirm syncthing
 # .stignore must exist before the folder is added, or the first scan indexes transcripts.
 install -d -o "$USER_NAME" -g "$USER_NAME" "$ROOT"
 if [ ! -f "$ROOT/.stignore" ]; then
-  printf '%s\n' '!**/memory' '!**/memory/**' '**' > "$ROOT/.stignore"
+  printf '%s\n' '/-home-guido-work*' '!**/memory' '!**/memory/**' '**' > "$ROOT/.stignore"
   chown "$USER_NAME:$USER_NAME" "$ROOT/.stignore"
 fi
 

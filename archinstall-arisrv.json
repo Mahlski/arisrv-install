@@ -62,6 +62,7 @@
     "base",
     "base-devel",
     "bash-completion",
+    "bubblewrap",
     "fish",
     "git",
     "intel-ucode",
@@ -74,10 +75,13 @@
     "neovim",
     "networkmanager",
     "openssh",
+    "ripgrep",
     "smartmontools",
+    "socat",
     "stow",
     "sudo",
     "syncthing",
+    "tmux",
     "tree"
   ]
 }
