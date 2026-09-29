@@ -24,15 +24,10 @@ grep -q '\.local/bin' "$HOME_DIR/.bashrc" 2>/dev/null ||
   echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME_DIR/.bashrc"
 
 as_user mkdir -p "$HOME_DIR/work" "$HOME_DIR/drop/cc" "$HOME_DIR/.cache" \
-  "$HOME_DIR/.local/share/claude" "$HOME_DIR/.local/state" "$HOME_DIR/.config/systemd/user"
+  "$HOME_DIR/.local/share/claude" "$HOME_DIR/.local/state/claude" "$HOME_DIR/.config/systemd/user"
 
-# Keep arisrv's own sessions (~/work slugs) out of the synced memory folder.
-STIGNORE="$HOME_DIR/.claude/projects/.stignore"
-if [ -f "$STIGNORE" ] && ! grep -q '^/-home-guido-work\*' "$STIGNORE"; then
-  sed -i '1i /-home-guido-work*' "$STIGNORE"
-fi
-
-# Deny rules guard the synced memory folders and config; the unit below enforces the rest.
+# Deny rules guard config; the synced memory lives outside ~/.claude (syncthing-hub.sh) and the
+# unit below keeps it read-only.
 SETTINGS="$HOME_DIR/.claude/settings.json"
 if [ ! -f "$SETTINGS" ]; then
   as_user tee "$SETTINGS" >/dev/null <<'EOF'
@@ -44,13 +39,6 @@ if [ ! -f "$SETTINGS" ]; then
       "Edit(~/.claude.json)",
       "Edit(~/.claude/settings.json)",
       "Edit(~/.claude/.credentials.json)",
-      "Edit(~/.claude/projects/.stignore)",
-      "Edit(~/.claude/projects/-home-guido/**)",
-      "Edit(~/.claude/projects/-home-guido-M*/**)",
-      "Edit(~/.claude/projects/-home-guido-c*/**)",
-      "Edit(~/.claude/projects/-home-guido-d*/**)",
-      "Edit(~/.claude/projects/-home-guido-s*/**)",
-      "Edit(~/.claude/projects/-tmp-*/**)",
       "Edit(~/.ssh/**)",
       "Edit(~/.config/**)",
       "Edit(~/.local/**)",
@@ -126,7 +114,7 @@ RestartSec=30
 ProtectSystem=strict
 ProtectHome=read-only
 PrivateTmp=yes
-ReadWritePaths=%h/.claude.json %h/work %h/drop %h/.claude %h/.cache %h/.local/share/claude %h/.local/state
+ReadWritePaths=%h/.claude.json %h/work %h/drop %h/.claude %h/.cache %h/.local/share/claude %h/.local/state/claude
 
 [Install]
 WantedBy=default.target

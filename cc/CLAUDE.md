@@ -33,7 +33,7 @@
 ## arisrv
 - Headless fallback/offload host: used when desktop/laptop are unavailable, and for long
   research and `/loop` runs.
-- Run interactive `claude` in `~/work` (a session slug from `~` would sync to the hub).
+- Run interactive `claude` in `~/work`, the only project dir the unit leaves writable.
 - Deliverables go to `~/drop/cc/` (read from other machines via SFTP).
 - Write limits are enforced by the systemd unit's mounts — do not loosen or work around them.
 - Shell snippets here are bash.
