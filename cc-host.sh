@@ -107,6 +107,8 @@ Description=Claude Code Remote Control server (arisrv)
 
 [Service]
 WorkingDirectory=%h/work
+# DNS is not up yet at boot; without this the first start dies on EAI_AGAIN
+ExecStartPre=/bin/sh -c 'until getent hosts api.anthropic.com >/dev/null; do sleep 2; done'
 ExecStart=%h/.local/bin/claude remote-control --spawn same-dir --permission-mode auto --name arisrv
 Restart=always
 RestartSec=30
