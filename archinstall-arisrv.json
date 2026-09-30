@@ -76,6 +76,7 @@
     "networkmanager",
     "openssh",
     "ripgrep",
+    "rsync",
     "smartmontools",
     "socat",
     "stow",
